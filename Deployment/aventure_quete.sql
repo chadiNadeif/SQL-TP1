@@ -26,6 +26,10 @@ CREATE TABLE IF NOT EXISTS PNJ (
     LieuxPNJ INT,
     FOREIGN KEY (LieuxPNJ) REFERENCES LIEUX(LieuxID)
 );
+Insert INTO PNJ (PNJID, PNJNAME, PNJDescript, PNJ Dialogue, LieuxPNJ)
+VALUES
+(15, Chef Edward, 'un homme sage et courage pret à tout pour son village', 'Bonjour voyageur j été à la recherche d un guerier pour aider mon village', 1),
+(16, Chaman, 'un homme mistérieux capable de faire des miracle grace a des simple plant', 'Si vous voulez que je vous aide dite le moi',1);
 CREATE TABLE IF NOT EXISTS ENNEMIS(
     EnnemisID INT PRIMARY KEY,
     EnnemisName TEXT,
@@ -47,9 +51,12 @@ CREATE TABLE IF NOT EXISTS QUETES(
     QuetesComplete BOOLEAN,
     PlayerID INT,
     NPCID INT,
-    FOREIGN KEY (PlayerID) REFERENCES PLAYERS(JoueursID),
     FOREIGN KEY (NPCID) REFERENCES PNJ(PNJID)
 );
+INSER INTO QUETES(QuetesID, QuetesDescript, QuetesComplete, NPCID)
+VALUES
+(17, 'Dernierement nous avons remarquer qu il ya une horde de loup qui c est instalé proche du villge peut tu nous aider à tuer c est loup', False,15),
+(18, 'Raméne moi des fleur verte et je pourai t aider avec ça', False,16);
 CREATE TABLE IF NOT EXISTS PNJ_QUETES(
     PNJ_QuestsID INT PRIMARY KEY,
     NPCID INT,
