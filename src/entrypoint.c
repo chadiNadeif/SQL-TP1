@@ -114,6 +114,152 @@ void CreerPerso(sqlite3*db, char Name[64], int Force, int HP){
         return ;
     }
     sqlite3_finalize(stmt);
+
+}
+void AfficherVillage(sqlite3*db){
+    sqlite3_stmt* stmt = NULL; 
+    const char* query = "SELECT LieuxID,LieuxName,LieuxDescript FROM LIEUX WHERE LieuxID =1"; 
+
+    if(sqlite3_prepare_v2(db, query, -1, &stmt, NULL)!= SQLITE_OK){
+        sqlite3_finalize(stmt);
+        return;
+    }
+    while(sqlite3_step(stmt)==SQLITE_ROW){
+        int id = sqlite3_column_int(stmt,0);
+        unsigned const char* name = (unsigned const char*)sqlite3_column_text(stmt,1);
+        unsigned const char* description = (unsigned const char*)sqlite3_column_text(stmt,2);
+        printf("ID: %d\nNom: %s\nDescription: %s\n", id, name, description);
+    }
+    sqlite3_finalize(stmt);
+}
+void AfficherPNJ(sqlite3*db){
+    sqlite3_stmt* stmt = NULL; //initialise ma requete SQL
+    const char* query = "SELECT PNJID, PNJNAME, PNJDescript, PNJ Dialogue, LieuxPNJ FROM PNJ WHERE PNJID=15"; //Ce que ma requete fait
+
+    if(sqlite3_prepare_v2(db, query, -1, &stmt, NULL)!= SQLITE_OK){//convertire la requete en sqlite
+        sqlite3_finalize(stmt);//liberer memoire après de la requete(stmt)
+        return;
+    }
+    while(sqlite3_step(stmt)==SQLITE_ROW){
+        int id = sqlite3_column_int(stmt,0);
+        unsigned const char* name = (unsigned const char*)sqlite3_column_text(stmt,1);
+        unsigned const char* description = (unsigned const char*)sqlite3_column_text(stmt,2);
+        printf("ID: %d\nNom: %s\nDescription: %s\n", id, name, description);
+    }
+    sqlite3_finalize(stmt);
+}
+void AfficherPNJ(sqlite3*db){
+    sqlite3_stmt* stmt = NULL; //initialise ma requete SQL
+    const char* query = "SELECT PNJID, PNJNAME, PNJDescript, PNJ Dialogue, LieuxPNJ FROM PNJ WHERE PNJID=15"; //Ce que ma requete fait
+
+    if(sqlite3_prepare_v2(db, query, -1, &stmt, NULL)!= SQLITE_OK){//convertire la requete en sqlite
+        sqlite3_finalize(stmt);//liberer memoire après de la requete(stmt)
+        return;
+    }
+    while(sqlite3_step(stmt)==SQLITE_ROW){
+        int id = sqlite3_column_int(stmt,0);
+        unsigned const char* name = (unsigned const char*)sqlite3_column_text(stmt,1);
+        unsigned const char* description = (unsigned const char*)sqlite3_column_text(stmt,2);
+        printf("ID: %d\nNom: %s\nDescription: %s\n", id, name, description);
+    }
+    sqlite3_finalize(stmt);
+}
+void AfficherQuete(sqlite3*db){
+    sqlite3_stmt* stmt = NULL; //initialise ma requete SQL
+    const char* query = "SELECT QuetesID, QuetesDescript, QuetesComplete, NPCID FROM QUETES WHERE QuetesID=17"; //Ce que ma requete fait
+
+    if(sqlite3_prepare_v2(db, query, -1, &stmt, NULL)!= SQLITE_OK){//convertire la requete en sqlite
+        sqlite3_finalize(stmt);//liberer memoire après de la requete(stmt)
+        return;
+    }
+    while(sqlite3_step(stmt)==SQLITE_ROW){
+        int id = sqlite3_column_int(stmt,0);
+        unsigned const char* name = (unsigned const char*)sqlite3_column_text(stmt,1);
+        unsigned const char* description = (unsigned const char*)sqlite3_column_text(stmt,2);
+        printf("ID: %d\nNom: %s\nDescription: %s\n", id, name, description);
+    }
+    sqlite3_finalize(stmt);
+}
+void AfficherQuete2(sqlite3*db){
+    sqlite3_stmt* stmt = NULL; //initialise ma requete SQL
+    const char* query = "SELECT QuetesID, QuetesDescript, QuetesComplete, NPCID FROM QUETES WHERE QuetesID=18"; //Ce que ma requete fait
+
+    if(sqlite3_prepare_v2(db, query, -1, &stmt, NULL)!= SQLITE_OK){//convertire la requete en sqlite
+        sqlite3_finalize(stmt);//liberer memoire après de la requete(stmt)
+        return;
+    }
+    while(sqlite3_step(stmt)==SQLITE_ROW){
+        int id = sqlite3_column_int(stmt,0);
+        unsigned const char* name = (unsigned const char*)sqlite3_column_text(stmt,1);
+        unsigned const char* description = (unsigned const char*)sqlite3_column_text(stmt,2);
+        printf("ID: %d\nNom: %s\nDescription: %s\n", id, name, description);
+    }
+    sqlite3_finalize(stmt);
+}
+
+void AfficherPNJ2(sqlite3*db){
+    sqlite3_stmt* stmt = NULL; //initialise ma requete SQL
+    const char* query = "SELECT PNJID, PNJNAME, PNJDescript, PNJ Dialogue, LieuxPNJ FROM PNJ WHERE PNJID=16"; //Ce que ma requete fait
+
+    if(sqlite3_prepare_v2(db, query, -1, &stmt, NULL)!= SQLITE_OK){//convertire la requete en sqlite
+        sqlite3_finalize(stmt);//liberer memoire après de la requete(stmt)
+        return;
+    }
+    while(sqlite3_step(stmt)==SQLITE_ROW){
+        int id = sqlite3_column_int(stmt,0);
+        unsigned const char* name = (unsigned const char*)sqlite3_column_text(stmt,1);
+        unsigned const char* description = (unsigned const char*)sqlite3_column_text(stmt,2);
+        printf("ID: %d\nNom: %s\nDescription: %s\n", id, name, description);
+    }
+    sqlite3_finalize(stmt);
+}
+void AfficherEnnemie1(sqlite3*db){
+    sqlite3_stmt* stmt = NULL; //initialise ma requete SQL
+    const char* query = "SELECT EnnemisName,EnnemisVie,EnnemisForce,LieuxEnnemis WHERE EnnemisID=10"; //Ce que ma requete fait
+
+    if(sqlite3_prepare_v2(db, query, -1, &stmt, NULL)!= SQLITE_OK){//convertire la requete en sqlite
+        sqlite3_finalize(stmt);//liberer memoire après de la requete(stmt)
+        return;
+    }
+    while(sqlite3_step(stmt)==SQLITE_ROW){
+        int id = sqlite3_column_int(stmt,0);
+        unsigned const char* name = (unsigned const char*)sqlite3_column_text(stmt,1);
+        unsigned const char* description = (unsigned const char*)sqlite3_column_text(stmt,2);
+        printf("ID: %d\nNom: %s\nDescription: %s\n", id, name, description);
+    }
+    sqlite3_finalize(stmt);
+}
+void AfficherStatEnnemie1(sqlite3*db){
+    sqlite3_stmt* stmt = NULL; //initialise ma requete SQL
+    const char* query = "SELECT EnnemisVie,EnnemisForce WHERE EnnemisID=10"; //Ce que ma requete fait
+
+    if(sqlite3_prepare_v2(db, query, -1, &stmt, NULL)!= SQLITE_OK){//convertire la requete en sqlite
+        sqlite3_finalize(stmt);//liberer memoire après de la requete(stmt)
+        return;
+    }
+    while(sqlite3_step(stmt)==SQLITE_ROW){
+        int id = sqlite3_column_int(stmt,0);
+        unsigned const char* name = (unsigned const char*)sqlite3_column_text(stmt,1);
+        unsigned const char* description = (unsigned const char*)sqlite3_column_text(stmt,2);
+        printf("ID: %d\nNom: %s\nDescription: %s\n", id, name, description);
+    }
+    sqlite3_finalize(stmt);
+}
+void AfficherObjects(sqlite3*db){
+    sqlite3_stmt* stmt = NULL; //initialise ma requete SQL
+    const char* query = "SELECT ObjectsName,ObjectsDescript,LieuxObjects WHERE ObjectsID=5"; //Ce que ma requete fait
+
+    if(sqlite3_prepare_v2(db, query, -1, &stmt, NULL)!= SQLITE_OK){//convertire la requete en sqlite
+        sqlite3_finalize(stmt);//liberer memoire après de la requete(stmt)
+        return;
+    }
+    while(sqlite3_step(stmt)==SQLITE_ROW){
+        int id = sqlite3_column_int(stmt,0);
+        unsigned const char* name = (unsigned const char*)sqlite3_column_text(stmt,1);
+        unsigned const char* description = (unsigned const char*)sqlite3_column_text(stmt,2);
+        printf("ID: %d\nNom: %s\nDescription: %s\n", id, name, description);
+    }
+    sqlite3_finalize(stmt);
 }
 void raylib_start(void){       
     srand(time(NULL));
@@ -137,7 +283,11 @@ void raylib_start(void){
         int HP;
         scanf("%d",&HP);
         CreerPerso(db, Name, Force, HP);
-        printf("Vous avancez en direction d'un village\n Vous rencontez un homme sage et courage pret a tout pour son village\nSon nom est Chef Edward\n Il s'approche et te parle\n Bonjour voyageur j ete a la recherche d un guerier pour aider mon village\nDernierement nous avons remarquer qu il ya une horde de loup qui c est instale proche du villge peut tu nous aider à tuer c est loup?\n");
+        printf("Vous vous reveillez dans un village");
+        AfficherVillage(db);
+        printf("Vous rencontez un homme\n");
+        AfficherPNJ(db);
+        AfficherQuete(db);
         printf("1:oui 2:non\n");
         int choice;
         scanf("%d", choice);
@@ -145,11 +295,29 @@ void raylib_start(void){
             printf("Vous refuser d'aider le Chef et vous quittez le village malheuresement en sortant du village vous rencontrer des loup et vous n'ete pas assez fort pour le vaincre\nGAME OVER\n");
             game = 2;
         }
-        else{
-            printf("Vous avez aider le Chef a vaincre les loups.\nVous avez gagner 2 point de force\n le chef vous donne une arme pour vous remercier + 2 force\n");
+        printf("Vous voyais les loups\n");
+        AfficherEnnemie1(db);
+        printf("le combat se lance\n les stats de l'ennemie sont:");
+        AfficherStatEnnemie1(db);
+        printf("Attaquer\n1:oui 2;non");
+        scanf("%d", choice);
+        if(choice==2){
+            printf("Vous n'avez pas reussi a vous echaper, vous avez succomber\nGAME OVER");
+            game = 2;
         }
-        printf("Dans le village vous recontrer un homme mistérieux capable de faire des miracle grace a des simple plant il ne vous donne pas son nom tous se qu'il vous dit est:Si vous voulez que je vous aide raménez moi des fleur verte dans la foret et je pourai t aider avec ça");
-        printf("Chercher c'est fleur?\n1:oui 2:non\n");
+        if(Force>=3){
+            printf("Vous avez reussi a vaincre les loups\n");
+        }
+        else{
+            printf("un loups vous a mordu mais vous avez reussi a le tuer - 2HP\n");
+            HP-=2;
+        }
+        printf("Le Chef vous ofre une epee en guise de remerciment\n");
+        AfficherObjects(db);
+        printf("Vous faite la rencontre d'un homme misterieux");
+        AfficherPNJ2(db);
+        AfficherQuete2(db);
+        printf("1:oui, 2:non");
         scanf("%d", choice);
         if(choice==2){
             printf("Vous continuez votre aventure malheuresement vous un serpent vous morde vous n'avez aucun moyen de vous soignez\n GAME OVER\n");
